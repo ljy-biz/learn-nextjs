@@ -1,7 +1,5 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-import { resolve } from "path";
-import { API_URL } from "../../../(home)/page";
 import Movieinfo, { getMovie } from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
 import { Suspense } from "react";

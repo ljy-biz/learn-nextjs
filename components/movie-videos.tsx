@@ -1,7 +1,7 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
+import { API_URL } from "../app/contants";
 import styles from "../styles/movie-videos.module.css";
-import { API_URL } from "../app/(home)/page";
 
 async function getVideos(id: string) {
     // console.log(`Fetching videos: ${Date.now()}`)
