@@ -1,7 +1,10 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+import styles from "../styles/movie-videos.module.css";
 import { API_URL } from "../app/(home)/page";
 
 async function getVideos(id: string) {
-    console.log(`Fetching videos: ${Date.now()}`)
+    // console.log(`Fetching videos: ${Date.now()}`)
     await new Promise((resolve) => setTimeout(resolve, 3000))
     // throw new Error('something Broke...')
     const response = await fetch(`${API_URL}/${id}/videos`);
@@ -10,5 +13,18 @@ async function getVideos(id: string) {
 
 export default async function MovieVideos({id}: {id: string}) {
     const videos = await getVideos(id);
-    return <h6>{JSON.stringify(videos)}</h6>
+    return (
+        // <h6>{JSON.stringify(videos)}</h6>
+        <div className={styles.container}>
+            {videos.map((video) => (
+                <iframe 
+                    key={video.id} 
+                    src={`https://youtube.com/embed/{$video.key}`} 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={video.name}
+                />
+            ))}
+        </div>
+    )
 }
